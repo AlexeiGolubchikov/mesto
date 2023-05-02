@@ -1,0 +1,7 @@
+.element {
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+    object-fit: cover;
+    border-radius: 10px;
+}

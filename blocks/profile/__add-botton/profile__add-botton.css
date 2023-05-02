@@ -1,0 +1,22 @@
+.profile__add-botton {
+    padding: 0;
+    width: 150px;
+    height: 50px;
+    background-image: url(../../../images/profile/profile-plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #000;
+    border: 1px solid #fff;
+}
+
+.profile__add-botton:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__add-botton {
+        width: 100%;
+        margin: 36px 0;
+    }
+}   
