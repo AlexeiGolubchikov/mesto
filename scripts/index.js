@@ -1,29 +1,28 @@
-const profileBottonEdit = document.querySelector('.profile__edit-botton');
-const popupBottonClose = document.querySelector('.popup__close');
+const profileButtonEdit = document.querySelector('.profile__edit-button');
+const popupButtonClose = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
+const inputName = document.querySelector('.input__field_type_name');
+const profileName = document.querySelector('.profile__name');
+const inputJob = document.querySelector('.input__field_type_job');
+const profileJob = document.querySelector('.profile__job');
+const inputElement = document.querySelector('.input');
 
 function showPopupContainer() {
-    popup.classList.add('popup__opened');
+    popup.classList.add('popup_opened');
+    inputName.value = profileName.textContent;
+    inputJob.value = profileJob.textContent;
 }
-profileBottonEdit.addEventListener('click', showPopupContainer);
+profileButtonEdit.addEventListener('click', showPopupContainer);
 
 function closePopupContainer() {
-    popup.classList.remove('popup__opened');
+    popup.classList.remove('popup_opened');
 }
-popupBottonClose.addEventListener('click', closePopupContainer);
+popupButtonClose.addEventListener('click', closePopupContainer);
 
-const popupName = document.querySelector('.popup__name');
-const profileName = document.querySelector('.profile__name');
-const popupJob = document.querySelector('.popup__job');
-const profileJob = document.querySelector('.profile__job');
-
-popupName.value = profileName.textContent;
-popupJob.value = profileJob.textContent;
-
-const popupBottonSave = document.querySelector('.popup__button');
-function saveNewDataProfile() {
-    profileName.textContent = popupName.value;
-    profileJob.textContent = popupJob.value;
-    popup.classList.remove('popup__opened');
+function saveNewDataProfile(evt) {
+    evt.preventDefault();
+    profileName.textContent = inputName.value;
+    profileJob.textContent = inputJob.value;
+    closePopupContainer();
 }
-popupBottonSave.addEventListener('click', saveNewDataProfile);
+inputElement.addEventListener('submit', saveNewDataProfile);

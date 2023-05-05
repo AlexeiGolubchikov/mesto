@@ -1,4 +1,4 @@
-.popup__button {
+.input__button {
     height: 50px;
     padding: 0;
     background-color: #000;
@@ -11,13 +11,13 @@
     text-align: center;
 }
 
-.popup__button:hover {
-    opacity: 0.8;
+.input__button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
-.popup__button {
+.input__button {
     height: 46px;
     font-size: 14px;
     line-height: 17px;
