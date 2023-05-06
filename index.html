@@ -17,9 +17,7 @@
             <div class="profile__info">
                 <div class="profile__data">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button type="button" aria-label="Редактировать" class="profile__edit-button">
-                        <img class="profile__edit-button-image" src="./images/profile/profile-edit-botton.svg" alt="Редактировать профиль">
-                    </button>
+                    <button type="button" aria-label="Редактировать" class="profile__edit-button"></button>
                 </div>
                 <p class="profile__job">Исследователь океана</p>
             </div>
@@ -77,10 +75,10 @@
         <div class="popup__container">
             <button type="button" aria-label="Закрыть" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="input" name="profile">
-                <input type="text" autocomplete="off" class="input__field input__field_type_name" name="profile">
-                <input type="text" autocomplete="off" class="input__field input__field_type_job" name="profile">
-                <button type="submit" name="profile" class="input__button">Сохранить</button>
+            <form class="form" name="form">
+                <input type="text" autocomplete="off" class="form__field form__field_type_name" name="form">
+                <input type="text" autocomplete="off" class="form__field form__field_type_job" name="form">
+                <button type="submit" name="profile" class="form__button">Сохранить</button>
             </form>
         </div>  
     </div>

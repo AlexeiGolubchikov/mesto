@@ -1,4 +1,4 @@
-.input__button {
+.form__button {
     height: 50px;
     padding: 0;
     background-color: #000;
@@ -11,13 +11,13 @@
     text-align: center;
 }
 
-.input__button:hover {
+.form__button:hover {
     background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
-.input__button {
+.form__button {
     height: 46px;
     font-size: 14px;
     line-height: 17px;

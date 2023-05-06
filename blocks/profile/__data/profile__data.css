@@ -1,6 +1,6 @@
 .profile__data {
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: baseline;
 }
