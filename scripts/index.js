@@ -26,3 +26,46 @@ function saveNewDataProfile(evt) {
     closePopupContainer();
 }
 formElement.addEventListener('submit', saveNewDataProfile);
+
+
+
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+  
+
+function addImage(element) {
+    const elements = document.querySelector('.elements');
+    const elementTemplate = document.querySelector('#element-template').content;
+    const imageElement = elementTemplate.querySelector('.element').cloneNode(true);
+    imageElement.querySelector('.element__title').textContent = element.name;
+    imageElement.querySelector('.element__image').src = element.link;
+    imageElement.querySelector('.element__image').alt = element.name;
+    elements.append(imageElement);
+}
+
+initialCards.forEach(addImage);
