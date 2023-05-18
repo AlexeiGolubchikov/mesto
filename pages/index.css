@@ -28,4 +28,5 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/element/__like/_active/element__like_active.css);
 /**{ outline: 1px solid yellow; }*/

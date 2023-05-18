@@ -85,6 +85,9 @@ function addCards(element) {
     cardElement.querySelector('.element__title').textContent = element.name;
     cardElement.querySelector('.element__image').src = element.link;
     cardElement.querySelector('.element__image').alt = element.name;
+    cardElement.querySelector('.element__like').addEventListener('click', function(evt) {
+      evt.target.classList.toggle('element__like_active');
+    });
     elements.append(cardElement);
 }
 initialCards.forEach(addCards);
@@ -97,6 +100,9 @@ function addNewCard(evt) {
   cardElement.querySelector('.element__title').textContent = formTitle.value;
   cardElement.querySelector('.element__image').alt = formTitle.value;
   cardElement.querySelector('.element__image').src = formLink.value;
+  cardElement.querySelector('.element__like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
   elements.prepend(cardElement);
   closePopupAddCard();
 };
