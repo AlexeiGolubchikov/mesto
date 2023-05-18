@@ -11,46 +11,42 @@ const formJob = document.querySelector('.form__field_type_job');
 const formTitle = document.querySelector('.form__field_type_title');
 const formLink = document.querySelector('.form__field_type_link');
 const formElement = document.querySelector('.form');
+const formElementAdd = document.querySelector('.form_type_add');
 const elements = document.querySelector('.elements');
 
-//функция открытия формы редактирования профиля
+//открытие формы редактирования профиля
 function showPopupEditContainer() {
     popupEdit.classList.add('popup_opened');
     formName.value = profileName.textContent;
     formJob.value = profileJob.textContent;
 }
-//метод открытия формы редактирования профиля
 profileButtonEdit.addEventListener('click', showPopupEditContainer);
 
-//функция открытия формы добавления карточки
+//открытие формы добавления карточки
 function showPopupAddCard() {
   popupAdd.classList.add('popup_opened');
 }
-//метод открытия формы добавления карточки
 profileButtonAdd.addEventListener('click', showPopupAddCard);
 
-//функция закрытия формы редактирования профиля
+//закрытие формы редактирования профиля
 function closePopupContainer() {
     popupEdit.classList.remove('popup_opened');
 }
-//метод закрытия формы редактирования профиля
 popupButtonClose.addEventListener('click', closePopupContainer);
 
-//функция закрытия формы добавления карточки
+//закрытие формы добавления карточки
 function closePopupAddCard() {
   popupAdd.classList.remove('popup_opened');
 }
-//метод закрытия формы добавления карточки
 popupCardButtonClose.addEventListener('click', closePopupAddCard);
 
-//функция сохранения введенных данных в форму редактирования профиля
+//сохранение введенных данных в форму редактирования профиля
 function saveNewDataProfile(evt) {
     evt.preventDefault();
     profileName.textContent = formName.value;
     profileJob.textContent = formJob.value;
     closePopupContainer();
-}
-//метод сохранения введенных данных в форму редактирования профиля
+};
 formElement.addEventListener('submit', saveNewDataProfile);
 
 
@@ -82,7 +78,7 @@ const initialCards = [
     }
   ];
   
-
+//добавление карточек при открытии страницы
 function addCards(element) {
     const elementTemplate = document.querySelector('#element-template').content;
     const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
@@ -91,5 +87,17 @@ function addCards(element) {
     cardElement.querySelector('.element__image').alt = element.name;
     elements.append(cardElement);
 }
-
 initialCards.forEach(addCards);
+
+//добваление карточек через popup
+function addNewCard(evt) {
+  evt.preventDefault();
+  const elementTemplate = document.querySelector('#element-template').content;
+  const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__title').textContent = formTitle.value;
+  cardElement.querySelector('.element__image').alt = formTitle.value;
+  cardElement.querySelector('.element__image').src = formLink.value;
+  elements.prepend(cardElement);
+  closePopupAddCard();
+};
+formElementAdd.addEventListener('submit', addNewCard);
