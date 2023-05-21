@@ -4,6 +4,7 @@ const popupButtonClose = document.querySelector('.popup__close');
 const popupCardButtonClose = document.querySelector('.popup__close_type_card');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
+const popupImage = document.querySelector('.popup_type_image');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const formName = document.querySelector('.form__field_type_name');
@@ -84,6 +85,11 @@ function deleteImage(evt) {
   item.remove();
 }
 
+//открытие просмотра фотографий
+function shouPopupImage() {
+  popupImage.classList.add('popup_opened');
+};
+
 //добавление карточек при открытии страницы
 function addCards(element) {
     const elementTemplate = document.querySelector('#element-template').content;
@@ -95,6 +101,7 @@ function addCards(element) {
       evt.target.classList.toggle('element__like_active');
     });
     cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
+    cardElement.querySelector('.element__image').addEventListener('click', shouPopupImage);
     elements.append(cardElement);
 };
 initialCards.forEach(addCards);
@@ -114,5 +121,6 @@ function addNewCard(evt) {
   elements.prepend(cardElement);
   closePopupAddCard();
   cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
+  cardElement.querySelector('.element__image').addEventListener('click', shouPopupImage);
 };
 formElementAdd.addEventListener('submit', addNewCard);
