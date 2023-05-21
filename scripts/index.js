@@ -78,6 +78,12 @@ const initialCards = [
     }
   ];
   
+//функция удаления карточек
+function deleteImage(evt) {
+  const item = evt.target.closest('.element');
+  item.remove();
+}
+
 //добавление карточек при открытии страницы
 function addCards(element) {
     const elementTemplate = document.querySelector('#element-template').content;
@@ -88,9 +94,11 @@ function addCards(element) {
     cardElement.querySelector('.element__like').addEventListener('click', function(evt) {
       evt.target.classList.toggle('element__like_active');
     });
+    cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
     elements.append(cardElement);
-}
+};
 initialCards.forEach(addCards);
+
 
 //добваление карточек через popup
 function addNewCard(evt) {
@@ -105,5 +113,6 @@ function addNewCard(evt) {
   });
   elements.prepend(cardElement);
   closePopupAddCard();
+  cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
 };
 formElementAdd.addEventListener('submit', addNewCard);
