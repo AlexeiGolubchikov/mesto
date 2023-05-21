@@ -1,7 +1,8 @@
 const profileButtonEdit = document.querySelector('.profile__edit-button');
 const profileButtonAdd = document.querySelector('.profile__add-button');
-const popupButtonClose = document.querySelector('.popup__close');
+const popupButtonClose = document.querySelector('.popup__close_type_edit');
 const popupCardButtonClose = document.querySelector('.popup__close_type_card');
+const popupImageButtonClose =document.querySelector('.popup__close_type_image');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
 const popupImage = document.querySelector('.popup_type_image');
@@ -40,6 +41,13 @@ function closePopupAddCard() {
   popupAdd.classList.remove('popup_opened');
 }
 popupCardButtonClose.addEventListener('click', closePopupAddCard);
+
+
+// закрытие окна просмотра фотографий
+function closePopupImage() {
+  popupImage.classList.remove('popup_opened');
+}
+popupImageButtonClose.addEventListener('click', closePopupImage);
 
 //сохранение введенных данных в форму редактирования профиля
 function saveNewDataProfile(evt) {
@@ -85,7 +93,7 @@ function deleteImage(evt) {
   item.remove();
 }
 
-//открытие просмотра фотографий
+//открытие окна просмотра фотографий
 function shouPopupImage() {
   popupImage.classList.add('popup_opened');
 };
@@ -102,6 +110,7 @@ function addCards(element) {
     });
     cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
     cardElement.querySelector('.element__image').addEventListener('click', shouPopupImage);
+
     elements.append(cardElement);
 };
 initialCards.forEach(addCards);
