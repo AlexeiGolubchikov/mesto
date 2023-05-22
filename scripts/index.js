@@ -42,7 +42,6 @@ function closePopupAddCard() {
 }
 popupCardButtonClose.addEventListener('click', closePopupAddCard);
 
-
 // закрытие окна просмотра фотографий
 function closePopupImage() {
   popupImage.classList.remove('popup_opened');
@@ -94,10 +93,12 @@ function deleteImage(evt) {
 }
 
 //открытие окна просмотра фотографий
-function shouPopupImage() {
+function showPopupImage() {
   popupImage.classList.add('popup_opened');
 };
 
+let captionPopupImage = document.querySelector('.popup__caption');
+let popupCard = document.querySelector('.popup__image');
 //добавление карточек при открытии страницы
 function addCards(element) {
     const elementTemplate = document.querySelector('#element-template').content;
@@ -109,14 +110,18 @@ function addCards(element) {
       evt.target.classList.toggle('element__like_active');
     });
     cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
-    cardElement.querySelector('.element__image').addEventListener('click', shouPopupImage);
-
+    cardElement.querySelector('.element__image').addEventListener('click', () => {
+      captionPopupImage.textContent = element.name;    
+      popupCard.src = element.link;
+      popupCard.alt = element.name;
+      showPopupImage();
+    });
+    
     elements.append(cardElement);
 };
 initialCards.forEach(addCards);
 
-
-//добваление карточек через popup
+//добавление карточек через popup
 function addNewCard(evt) {
   evt.preventDefault();
   const elementTemplate = document.querySelector('#element-template').content;
@@ -130,6 +135,11 @@ function addNewCard(evt) {
   elements.prepend(cardElement);
   closePopupAddCard();
   cardElement.querySelector('.element__delete').addEventListener('click', deleteImage);
-  cardElement.querySelector('.element__image').addEventListener('click', shouPopupImage);
+  cardElement.querySelector('.element__image').addEventListener('click', () => {
+    captionPopupImage.textContent = formTitle.value;    
+    popupCard.src = formLink.value;
+    popupCard.alt = formTitle.value;
+    showPopupImage();
+  });
 };
 formElementAdd.addEventListener('submit', addNewCard);
