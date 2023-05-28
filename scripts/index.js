@@ -16,25 +16,24 @@ const captionPopupImage = popupShowImage.querySelector('.popup__caption');
 const popupCard = popupShowImage.querySelector('.popup__image');
 const elementTemplate = document.querySelector('#element-template').content;
 
-const popup = document.querySelectorAll('.popup');
+//const popup = document.querySelectorAll('.popup');
 
 //функция открытия модального окна
 function openPopup(popup) {
-  console.log('open')
   popup.classList.add('popup_opened');
 };
 
 //функция закрытия модального окна
 const popupButtonClose = document.querySelectorAll('.popup__close');
-function closePopup() {
-  console.log('close')
-  popup.forEach((item) => {
-    item.classList.remove('popup_opened');
-  });
-};
+  function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+ };
 popupButtonClose.forEach((btn) => {
-  btn.addEventListener('click', closePopup);
-});
+  btn.addEventListener('click', () => {
+    const popupClosest = btn.closest('.popup');
+    closePopup(popupClosest);
+  });
+}); 
 
 //открытие формы редактирования профиля
 buttonEditProfile.addEventListener('click', () => {
@@ -53,7 +52,7 @@ function saveNewDataProfile(evt) {
     evt.preventDefault();
     profileName.textContent = formEditName.value;
     profileJob.textContent = formEditJob.value;
-    closePopup();
+    closePopup(popupEditProfile);
 };
 formEditProfile.addEventListener('submit', saveNewDataProfile);
 
@@ -122,6 +121,6 @@ function addCard(evt) {
     link: formAddLinkCard.value
   };
   createCard(cardData);
-  closePopup();
+  closePopup(popupAddCard);
 }
 formAddCard.addEventListener('submit', addCard);
