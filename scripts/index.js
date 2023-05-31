@@ -16,8 +16,6 @@ const captionPopupImage = popupShowImage.querySelector('.popup__caption');
 const popupCard = popupShowImage.querySelector('.popup__image');
 const elementTemplate = document.querySelector('#element-template').content;
 
-//const popup = document.querySelectorAll('.popup');
-
 //функция открытия модального окна
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -62,33 +60,6 @@ function deleteCard(evt) {
   item.remove();
 }
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 //функция создания карточки
 function createCard(item) {
   const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
@@ -110,7 +81,6 @@ function createCard(item) {
   return cardElement;
 };
 
-//import { initialCards } from "./constants.js";
 initialCards.reverse().forEach(createCard);
 
 //добавление карточек через popup
@@ -122,5 +92,6 @@ function addCard(evt) {
   };
   createCard(cardData);
   closePopup(popupAddCard);
+  formAddCard.reset();
 }
 formAddCard.addEventListener('submit', addCard);
