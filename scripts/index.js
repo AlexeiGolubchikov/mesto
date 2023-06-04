@@ -22,11 +22,14 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
 };
 
+
+
 //функция закрытия модального окна
 const popupButtonClose = document.querySelectorAll('.popup__close');
-  function closePopup(popup) {
-    popup.classList.remove('popup_opened');
- };
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+};
+
 popupButtonClose.forEach((btn) => {
   btn.addEventListener('click', () => {
     const popupClosest = btn.closest('.popup');
@@ -34,16 +37,28 @@ popupButtonClose.forEach((btn) => {
   });
 });
 
-//закрыте окна при клике на оверлей
 const popup = document.querySelectorAll('.popup');
-popup.forEach((popup) => {
+
+function closePopupClickOverlay(popup) {
   popup.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-      popup.classList.remove('popup_opened');
+      closePopup(popup);
     }
-  })
+  });
+};
+
+function closePopupPressEscape(popup) {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === "Escape") {
+      closePopup(popup);
+    };
+  });
+}
+
+popup.forEach((evt) => {
+  closePopupClickOverlay(evt);
+  closePopupPressEscape(evt);
 });
-  
 
 //открытие формы редактирования профиля
 buttonEditProfile.addEventListener('click', () => {
@@ -108,64 +123,3 @@ function addCard(evt) {
   formAddCard.reset();
 }
 formAddCard.addEventListener('submit', addCard);
-
-
-//валидация
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  })
-}; 
-const showInputError = (formPopup, formEditName, errorMessage) => {
-  const formEditNameError = formPopup.querySelector(`.${formEditName.id}-error`);
-  formEditName.classList.add('form__field_type_error');
-  formEditNameError.classList.add('input-error_active');
-  formEditNameError.textContent = errorMessage;
-};
-
-const hideInputError = (formPopup, formEditName) => {
-  const formEditNameError = formPopup.querySelector(`.${formEditName.id}-error`);
-  formEditName.classList.remove('form__field_type_error');
-  formEditNameError.classList.remove('input-error_active');
-  formEditNameError.textContent = '';
-};
-
-const isValid = (formPopup, formEditName) => {
-  if (!formEditName.validity.valid) {
-    showInputError(formPopup, formEditName, formEditName.validationMessage);
-  } else {
-    hideInputError(formPopup, formEditName);
-  }
-};
-
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('form__button_inactive');
-  } else {
-    buttonElement.classList.remove('form__button_inactive');
-  }
-}; 
-
-const setEventListeners = (formPopup) => {
-  const buttonElement = formPopup.querySelector('.form__button');
-  const inputList = Array.from(formPopup.querySelectorAll('.form__field'));
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', () => {
-      toggleButtonState(inputList, buttonElement);
-      isValid(formPopup, inputElement);
-    });
-  });
-  toggleButtonState(inputList, buttonElement);
-};
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.form'));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement);
-  });
-};
-
-enableValidation();

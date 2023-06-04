@@ -1,6 +1,6 @@
 .form__field {
-    padding: 0 0 6px 0;
-    margin: 0 0 30px 0;
+    padding: 0 0 5px 0;
+    margin: 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -8,8 +8,4 @@
     border-bottom: 1px solid;
     border-color: rgba(0, 0, 0, 0.2);
     outline: none;
-}
-
-.form__field:last-of-type {
-    margin-bottom: 48px;
 }
