@@ -19,7 +19,6 @@ const formAddLinkCard = formAddCard.elements.addLinkCard;
 function closePopupPressEscape(evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector('.popup_opened');
-    console.log('Esc');
     closePopup(openedPopup);
   };
 };
@@ -41,11 +40,9 @@ const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
       if (evt.target.classList.contains('popup_opened')) {
-        console.log('overlayClose')  
         closePopup(popup);
       }
       if (evt.target.classList.contains('popup__close')) {
-        console.log('buttonClose')  
         closePopup(popup);
       }
   });
@@ -112,8 +109,5 @@ function addCard(evt) {
   createCard(cardData);
   closePopup(popupAddCard);
   formAddCard.reset()
-  const buttonElement = formAddCard.elements.buttonAddCard;
-  buttonElement.disabled = true;
-  buttonElement.classList.add('form__button_inactive');
 }
 formAddCard.addEventListener('submit', addCard);
