@@ -3,43 +3,45 @@ const hasInvalidInput = (inputList) => {
       return !inputElement.validity.valid;
     })
   }; 
-  const showInputError = (formPopup, formEditName, errorMessage) => {
-    const formEditNameError = formPopup.querySelector(`.${formEditName.id}-error`);
+  const showInputError = (formEditProfile, formEditName, errorMessage) => {
+    const formEditNameError = formEditProfile.querySelector(`.${formEditName.id}-error`);
     formEditName.classList.add('form__field_type_error');
     formEditNameError.classList.add('input-error_active');
     formEditNameError.textContent = errorMessage;
   };
   
-  const hideInputError = (formPopup, formEditName) => {
-    const formEditNameError = formPopup.querySelector(`.${formEditName.id}-error`);
+  const hideInputError = (formEditProfile, formEditName) => {
+    const formEditNameError = formEditProfile.querySelector(`.${formEditName.id}-error`);
     formEditName.classList.remove('form__field_type_error');
     formEditNameError.classList.remove('input-error_active');
     formEditNameError.textContent = '';
   };
   
-  const isValid = (formPopup, formEditName) => {
+  const isValid = (formEditProfile, formEditName) => {
     if (!formEditName.validity.valid) {
-      showInputError(formPopup, formEditName, formEditName.validationMessage);
+      showInputError(formEditProfile, formEditName, formEditName.validationMessage);
     } else {
-      hideInputError(formPopup, formEditName);
+      hideInputError(formEditProfile, formEditName);
     }
   };
   
   const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
+      buttonElement.disabled = true;
       buttonElement.classList.add('form__button_inactive');
     } else {
+      buttonElement.disabled = false;
       buttonElement.classList.remove('form__button_inactive');
     }
   };
   
-  const setEventListeners = (formPopup) => {
-    const buttonElement = formPopup.querySelector('.form__button');
-    const inputList = Array.from(formPopup.querySelectorAll('.form__field'));
+  const setEventListeners = (formEditProfile) => {
+    const buttonElement = formEditProfile.querySelector('.form__button');
+    const inputList = Array.from(formEditProfile.querySelectorAll('.form__field'));
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         toggleButtonState(inputList, buttonElement);
-        isValid(formPopup, inputElement);
+        isValid(formEditProfile, inputElement);
       });
     });
     toggleButtonState(inputList, buttonElement);
@@ -54,5 +56,13 @@ const hasInvalidInput = (inputList) => {
       setEventListeners(formElement);
     });
   };
-  
-  enableValidation();
+
+
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  }); 

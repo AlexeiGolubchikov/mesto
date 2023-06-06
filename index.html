@@ -33,12 +33,12 @@
         <div class="popup__container">
             <button type="button" aria-label="Закрыть всплывающее окно" class="popup__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="form form_type_edit" name="form">
-                <input id="edit-name-input" type="text" autocomplete="off" placeholder="Имя" class="form__field form__field_type_name" name="form" required minlength="2" maxlength="40">
+            <form class="form form_type_edit" name="editProfile">
+                <input id="edit-name-input" type="text" autocomplete="off" placeholder="Имя" class="form__field form__field_type_name" name="name" required minlength="2" maxlength="40">
                 <span class="input-error edit-name-input-error"></span>
-                <input id="edit-job-input" type="text" autocomplete="off" placeholder="Вид деятельности" class="form__field form__field_type_job" name="form" required minlength="2" maxlength="200"> 
+                <input id="edit-job-input" type="text" autocomplete="off" placeholder="Вид деятельности" class="form__field form__field_type_job" name="job" required minlength="2" maxlength="200"> 
                 <span class="input-error edit-job-input-error"></span>
-                <button type="submit" name="form" class="form__button">Сохранить</button>
+                <button type="submit" name="buttonSaveProfile" class="form__button">Сохранить</button>
             </form>
         </div>
     </div>
@@ -47,11 +47,11 @@
             <button type="button" aria-label="Закрыть всплывающее окно" class="popup__close"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="form form_type_add" name="addCard">
-                <input id="title-card-input" type="text" autocomplete="off" placeholder="Название" class="form__field form__field_type_title" name="addCard" required minlength="2" maxlength="30">
+                <input id="title-card-input" type="text" autocomplete="off" placeholder="Название" class="form__field form__field_type_title" name="addTitleCard" required minlength="2" maxlength="30">
                 <span class="input-error title-card-input-error"></span>
-                <input id="url-card-input" type="url" autocomplete="off" placeholder="Ссылка на картинку" class="form__field form__field_type_link" name="addCard" required>
+                <input id="url-card-input" type="url" autocomplete="off" placeholder="Ссылка на картинку" class="form__field form__field_type_link" name="addLinkCard" required>
                 <span class="input-error url-card-input-error"></span>
-                <button type="submit" name="addCard" class="form__button">Создать</button>
+                <button type="submit" name="buttonAddCard" class="form__button">Создать</button>
             </form>
         </div>  
     </div>
