@@ -25,7 +25,7 @@ export const initialCards = [
     }
   ];
 
-  export const enableValidation = {
+  export const validationConfig = {
     formSelector: '.form',
     inputSelector: '.form__field',
     submitButtonSelector: '.form__button',
