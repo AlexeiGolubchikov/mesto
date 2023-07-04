@@ -78,8 +78,7 @@ function showImage(name, link) {
 
 function createCard(item) {
   const card = new Card(item, '#element-template', showImage);
-  const cardElement = card.generateCard();
-  return cardElement;
+  return card.generateCard();
 }
 
 initialCards.forEach((item) => {
